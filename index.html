@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+		<style>
+			body {
+				font-size: 5vw;
+				margin: 0px;
+				padding: 0xp;
+				/*background-color: #444444;*/
+				/*color: white;*/
+			}
+
+			</style>
+			<script>
+				function sendPost(url, data) {
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", url, true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.send(data);
+				}
+				
+			
+				function go() {
+					var para = document.getElementById("para").value;
+					var assunto = document.getElementById("assunto").value;
+					var mensagem = document.getElementById("mensagem").value;
+					var params = "para="+ para + "&assunto=" + assunto + "&mensagem=" + mensagem
+					sendPost("http://192.168.43.244:3000/email", params);
+				}
+			</script>
+	</head>
+	<body>
+		<label>Texto: </label><br>
+		<label>De: leonardo.petrauskas@unimedsa.com.br</label><br>
+		<label>Para:</label>
+		<input type="text" id="para"><br>
+		<label>Assunto:</label>
+		<input type="text" id="assunto"><br>
+		<label>Mensagem:</label>
+		<input type="text" id="mensagem"><br>
+		<input type="button" value="Enviar" onclick="go()">
+	</body>
+</html>
